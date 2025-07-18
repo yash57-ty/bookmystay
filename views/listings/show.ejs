@@ -1,0 +1,42 @@
+<% layout("/layouts/boilerplate")%>
+<div class="row-8">
+    <div class="col-8 offset-3">
+    <b><h4><%= listings.title%></h4></b>
+    </div>
+    <div class="card col-6 offset-2 show-card">
+    <img class="card-img-top show-img" src="<%= listings.image%>" alt="listing_image">
+    <div class="card-body">
+    <p class="card-text">
+        <br><%=listings.description%>
+        <br>&#8377;<%=listings.price%>
+        <br><%=listings.country%>
+        <br><%=listings.location%>
+     </p>
+</div>
+</div>
+<div class="btns">
+    <a href="/listings/<%= listings._id%>/edit" class="btn btn-dark  offset-2">Edit</a>
+    <form  method="post" action="/listings/<%= listings._id%>?_method=DELETE">
+        <button class="btn btn-dark offset-4">Delete</button>
+    </form>
+</div>
+    <div class="col-8 offset-3 mb-3">
+        <hr />
+        <h4>Leave a Review</h4>
+        <form method="post" action="/listings/<%=listings.id%>/reviews" novalidate class="needs-validation">
+            <div class="mb-3 mt-3">
+                <label class="form-label" for="rating">Rating</label>
+                <input type="range" min="1" max="5" id="rating" name="review[rating]">
+            </div>
+            <div>
+                <label class="form-label"  for="comment">comments</label>
+                <textarea required name="review[comment]" class="form-control" id="comment" cols="30" rows="10"></textarea>
+                <div class="invalid-feedback">
+                 please submit comment!!!
+                </div>
+            </div>
+            <br>
+            <button class="btn btn-outline-dark">submit</button>
+        </form>
+    </div>
+    </div>

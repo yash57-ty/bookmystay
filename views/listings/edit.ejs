@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderLust</title>
+</head>
+<body>
+    <%- layout("/layouts/boilerplate") %>
+    <div class="row-8">    
+    <div class="col-8 offset-2">
+    <h3>Edit Your Listing</h3>
+    <form method="post" action="/listings/<%=listing1._id%>?_method=PUT" novalidate class="needs-validation">
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input required name="listing[title]" class="form-control" value="<%=listing1.title%>" type="text" />
+        <div class="valid-feedback">Title is good! </div>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea  required  name="listing[description]" class="form-control"><%=listing1.description%></textarea>
+        <div class="invalid-feedback">Please enetr short description</div>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Image Link</label>
+        <input name="listing[image]"  required  class="form-control" value="<%=listing1.image%>" type="text">
+        <div class="invalid-feedback">Please enetr correct URL</div>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">price</label>
+        <input name="listing[price]"  required class="form-control" value="<%=listing1.price%>" type="number" />
+         <div class="invalid-feedback">Price Should be Valid</div>
+    </div>
+    <div class="mb-3">
+        <label for="country" class="form-label">country</label>
+        <input name="listing[country]"  required  class="form-control" value="<%=listing1.country%>" type="text" />
+        <div class="invalid-feedback">country Should be Valid</div>
+    </div>
+    <div class="mb-3">
+        <label for="location" class="form-label">location</label>
+        <input name="listing[location]"  required  value="<%=listing1.location%>" class="form-control" type="text" />
+        <div class="invalid-feedback">Location Should be Valid</div>
+    </div>
+        <br>
+        <button class="btn btn-dark">edit</button>
+    </form>
+    </div>
+    <br></br>
+</body>
+</html>
