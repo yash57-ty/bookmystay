@@ -3,15 +3,13 @@
     <div class="col-8 offset-3">
     <b><h4><%= listings.title%></h4></b>
     </div>
-    <div class="card col-6 offset-2 show-card">
+    <div class="card col-6 offset-2 show-card listing-card">
     <img class="card-img-top show-img" src="<%= listings.image%>" alt="listing_image">
     <div class="card-body">
-    <p class="card-text">
-        <br><%=listings.description%>
-        <br>&#8377;<%=listings.price%>
-        <br><%=listings.country%>
-        <br><%=listings.location%>
-     </p>
+    <p class="card-text"> <br><%=listings.description%></p>
+    <p class="card-text"><br>&#8377;<%=listings.price%></p>
+    <p class="card-text"><br><%=listings.country%></p>
+    <p class="card-text"><br><%=listings.location%></p>
 </div>
 </div>
 <div class="btns">
@@ -38,5 +36,20 @@
             <br>
             <button class="btn btn-outline-dark">submit</button>
         </form>
+        <hr />
+        <b><h4>All Reviews</h4></b>
+        <% for(review of listings.reviews){ %>
+            <div class="card mb-3">
+                <div class="card-body">
+                <h5 class="card-title">Jane Doe</h5>
+                <p class="card-text"><%= review.comment%></p>
+                <p class="card-text"><%= review.rating%> stars</p>       
+            </div>
+            <br>
+            <form class="mb-3" method="post" action="/listings/<%=listings._id%>/reviews/<%= review._id%>?_method=DELETE">
+                 <button class="btn btn-outline-dark">Delete</button>
+            </form>
+        </div>
+        <% } %>
     </div>
     </div>
